@@ -1,0 +1,11 @@
+# Interface definition for thorn EOS_CompOSE_Init
+implements: EOS_CompOSE_Init
+inherits: grid ADMBase Hydrobase GRHydro
+
+################################################################################
+void FUNCTION EOS_CompOSE_YeTemp(CCTK_INT  IN          npoints, \
+                                 CCTK_REAL IN    ARRAY rho,     \
+                                 CCTK_REAL OUT   ARRAY temp,    \
+                                 CCTK_REAL OUT   ARRAY ye)
+
+PROVIDES FUNCTION EOS_CompOSE_YeTemp WITH EOS_CompOSE_YeTemp_from_rho LANGUAGE Fortran

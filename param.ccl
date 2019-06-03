@@ -1,0 +1,23 @@
+# Parameter definitions for thorn EOS_CompOSE_Init
+
+restricted:
+
+# Variables for tabulated EOS
+STRING eos_compose_init_table_name "/path/to/eostable for NSE equation of state table (ASCII)"
+{
+.* :: "Can be anything. Max 256 chars."
+} eostable
+
+BOOLEAN eos_compose_init_set_ye "Read in CompOSE and set ye initial data table?"
+{
+} "Yes"
+
+INT eos_compose_init_tableshape[2] "Dimensions of table to be read. nRho, nWidth"
+{
+1:* :: "Any positive integer"
+} 1
+
+REAL eos_compose_init_temp "Set temperature to value in MeV"
+{
+ : :: ""
+} 0.00001

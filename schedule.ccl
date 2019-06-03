@@ -1,0 +1,26 @@
+# Schedule definitions for thorn EOS_CompOSE_Init
+
+SCHEDULE EOS_CompOSE_Init_Startup AT WRAGH
+{
+ LANG: Fortran
+ OPTIONS: global
+} "Set up conversion factors"
+
+if (eos_compose_init_set_ye)
+{
+ SCHEDULE EOS_CompOSE_Init_LoadTable AT CCTK_BASEGRID
+ {
+  LANG: Fortran
+  OPTIONS: global
+ } "Read EoS table in NSE and build interpolator for Ye"
+
+ SCHEDULE EOS_CompOSE_Init_SetYe IN HydroBase_Initial AFTER Meudon_Bin_NS_initialise
+ {
+  LANG: Fortran
+ } "Set up Ye initial data"
+
+ SCHEDULE EOS_CompOSE_Init_SetTemp IN HydroBase_Initial AFTER Meudon_Bin_NS_initialise
+ {
+  LANG: Fortran
+ } "Set up Temperature initial data"
+}
